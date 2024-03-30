@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Wallpaper } from "@/types/wallpaper";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import ListLoading from "../list-loading";
 
 interface Props {
   wallpapers: Wallpaper[];
@@ -118,7 +119,7 @@ export default function ({ setWallpapers }: Props) {
   }, []);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full gap-10">
       <form
         className="flex w-full flex-col gap-3 sm:flex-row"
         onSubmit={() => {
@@ -155,6 +156,9 @@ export default function ({ setWallpapers }: Props) {
           {loading ? "Generating..." : "Generate"}
         </Button>
       </form>
+      {
+        loading && <ListLoading />
+      }
     </div>
   );
 }

@@ -120,7 +120,7 @@ export async function POST(req: Request) {
       return respErr("credits not enough");
     }
 
-    const raw_img_url = await requestComfyUI(description, text);
+    const raw_img_url = await requestMalette(description, text);
 
     const currentDate = new Date();
     const created_at = currentDate.toISOString();
